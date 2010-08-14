@@ -1,0 +1,6 @@
+[submodule "socket.io-node"]
+	path = socket.io-node
+	url = http://github.com/LearnBoost/Socket.IO-node.git
+[submodule "connect"]
+	path = connect
+	url = http://github.com/senchalabs/connect
