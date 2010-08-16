@@ -1,0 +1,92 @@
+html {
+  height: 100%; }
+
+body {
+  color: #dddddd;
+  font-family: Helvetica, Arial;
+  font-size: 14px;
+  line-height: 20px;
+  height: 100%;
+  background: #C0DEED url(/images/bg.png) repeat-x;
+  overflow-y: hidden; }
+
+a img {
+  border: 0px; }
+
+form {
+  margin: 0px;
+  padding: 0px;
+  display: inline; }
+
+#wrapper {
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#chatfeed {
+  width: 100%;
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  height: 400px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+#talkbox {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px; }
+
+#sendbutt {
+  background-color: #6A8D38;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  color: white;
+  padding: 8px;
+  text-size: 15px;
+  float: right;
+  font-weight: normal;
+  width: 50px;
+  text-align: center;
+  cursor: pointer; }
+
+#sendbutt:hover {
+  background-color: #204F28; }
+
+#talkbox input {
+  height: 25px;
+  padding: 4px;
+  font-size: 17px;
+  color: #404040; }
+
+#name {
+  width: 150px; }
+
+#comment {
+  width: 395px; }
+
+#controls {
+  color: #004972;
+  font-size: 10px; }
+
+#controls a {
+  color: #004972; }
