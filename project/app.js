@@ -31,7 +31,7 @@ io.on('connection', function(client){
 console.log('Listening on http://0.0.0.0:' + port )
 
 //setup the errors
-app.error(function(err, req, res, next){
+server.error(function(err, req, res, next){
     if (err instanceof NotFound) {
         res.render('404.ejs');
     } else {
@@ -52,5 +52,15 @@ server.get('/', function(req,res){
             }
   });
 });
+
+//Test Routes for 404 and 500 errors
+server.get('/404', function(req, res){
+    throw new NotFound;
+});
+
+server.get('/500', function(req, res){
+    throw new Error('keyboard cat!');
+});
+
 
 
