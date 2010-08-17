@@ -1,17 +1,32 @@
 require('../lib/setup').ext( __dirname + "/../lib").ext( __dirname + "/../lib/express/support");
 var connect = require('connect');
-var server = require('express').createServer(
-  connect.staticProvider('./static')
-);
 var sys = require('sys');
 var io = require('socket.io-node');
 
-//server.use(connect.router(main));
+
+var server = require('express').createServer();
+server.configure(function(){
+    server.set('views', __dirname + '/views');
+    server.use(connect.bodyDecoder());
+    server.use(server.router);
+    server.use(connect.staticProvider('./static'));
+});
+
 var port = 8765;
 server.listen( port);
 console.log('Listening on http://0.0.0.0:' + port )
 
-server.get('/', function(req,res){
+server.get('/test', function(req,res){
+  res.render('index.ejs', {
+    locals : { 
+              header: 'This is a header'
+             ,footer: 'This is a footer'
+             ,title : 'A Test Page'
+             ,description: 'Description Here'
+             ,author: 'Your Name'
+             ,analyticssiteid: 'XXXXXXX' 
+            }
+  });
   res.send("HELLO");
 });
 
