@@ -15,7 +15,12 @@ cp ./lib/html5-boilerplate/css/style.css ./project/static/css/style.css
 cp ./lib/html5-boilerplate/robots.txt ./project/static/robots.txt
 
 echo "Removing the stuff you dont want..."
-
+rm -rf .git
+rm -rf bin
+rm README.md
 
 echo "Initing the new git project..."
+git init
+git add .
+git commit -m"Initial Commit"
 
