@@ -1,5 +1,9 @@
+#!/bin/sh
+
 echo "Updating git submodules"
+here=`pwd`
 git submodule update --init
+git submodule foreach "cd $here/\$path && $0"
 
 echo "Creating static folders"
 mkdir ./project/static/images
