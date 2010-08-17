@@ -12,7 +12,7 @@ server.configure(function(){
     server.use(server.router);
     server.use(connect.staticProvider(__dirname + '/static'));
 });
-var port = 8765;
+var port = 8081;
 server.listen( port);
 
 //Setup Socket.IO
