@@ -30,6 +30,14 @@ io.on('connection', function(client){
 
 console.log('Listening on http://0.0.0.0:' + port )
 
+//setup the errors
+app.error(function(err, req, res, next){
+    if (err instanceof NotFound) {
+        res.render('404.ejs');
+    } else {
+        res.render('500.ejs', { locals: { error: err } });
+    }
+});
 
 //Routes
 server.get('/', function(req,res){
