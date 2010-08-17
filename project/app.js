@@ -24,7 +24,8 @@ server.get('/test', function(req,res){
              ,title : 'A Test Page'
              ,description: 'Description Here'
              ,author: 'Your Name'
-             ,analyticssiteid: 'XXXXXXX' 
+             ,analyticssiteid: 'XXXXXXX'
+             ,info: 'And this is info' 
             }
   });
   res.send("HELLO");
