@@ -1,3 +1,6 @@
+echo "Updating git submodules"
+git submodule update --init
+
 echo "Copying Markup and CSS BoilerPlate..."
 cp ./lib/html5-boilerplate/404.html ./project/views/404.ejs
 cp ./lib/html5-boilerplate/js/plugins.js ./project/static/js/plugins.js
