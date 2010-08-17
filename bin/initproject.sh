@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Updating git submodules"
-sh ./bin/initsubmodules.sh
+git submodule update --init --recursive
 
 echo "Creating static folders"
 mkdir ./project/static/images
