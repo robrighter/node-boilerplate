@@ -1,5 +1,5 @@
 //setup Dependencies
-require('../lib/setup').ext( __dirname + "/../lib").ext( __dirname + "/../lib/express/support");
+require(__dirname + "/../lib/setup").ext( __dirname + "/../lib").ext( __dirname + "/../lib/express/support");
 var connect = require('connect');
 var sys = require('sys');
 var io = require('socket.io-node');
@@ -10,7 +10,7 @@ server.configure(function(){
     server.set('views', __dirname + '/views');
     server.use(connect.bodyDecoder());
     server.use(server.router);
-    server.use(connect.staticProvider('./static'));
+    server.use(connect.staticProvider(__dirname + '/static'));
 });
 var port = 8765;
 server.listen( port);
