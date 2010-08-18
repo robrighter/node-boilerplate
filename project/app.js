@@ -18,14 +18,21 @@ server.configure(function(){
 //setup the errors
 server.error(function(err, req, res, next){
     if (err instanceof NotFound) {
-        res.render('404.ejs');
+        res.render('404.ejs', { locals: { 
+                  header: '#Header#'
+                 ,footer: '#Footer#'
+                 ,title : '404 - Not Found'
+                 ,description: ''
+                 ,author: ''
+                 ,analyticssiteid: 'XXXXXXX' 
+                } });
     } else {
         res.render('500.ejs', { locals: { 
                   header: '#Header#'
                  ,footer: '#Footer#'
-                 ,title : 'Page Title'
-                 ,description: 'Page Description'
-                 ,author: 'Your Name'
+                 ,title : 'The Server Encountered an Error'
+                 ,description: ''
+                 ,author: ''
                  ,analyticssiteid: 'XXXXXXX'
                  ,error: err 
                 } });
