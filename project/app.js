@@ -3,7 +3,7 @@ require(__dirname + "/../lib/setup").ext( __dirname + "/../lib").ext( __dirname 
 var connect = require('connect')
     , express = require('express')
     , sys = require('sys')
-    , io = require('socket.io-node')
+    , io = require('Socket.IO-node')
     , port = 8081;
 
 //Setup Express
