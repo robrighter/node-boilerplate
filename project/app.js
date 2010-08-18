@@ -1,18 +1,36 @@
 //setup Dependencies
 require(__dirname + "/../lib/setup").ext( __dirname + "/../lib").ext( __dirname + "/../lib/express/support");
-var connect = require('connect');
-var sys = require('sys');
-var io = require('socket.io-node');
+var connect = require('connect')
+    , express = require('express')
+    , sys = require('sys')
+    , io = require('socket.io-node')
+    , port = 8081;
 
 //Setup Express
-var server = require('express').createServer();
+var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
     server.use(connect.bodyDecoder());
     server.use(server.router);
     server.use(connect.staticProvider(__dirname + '/static'));
 });
-var port = 8081;
+
+//setup the errors
+server.error(function(err, req, res, next){
+    if (err instanceof NotFound) {
+        res.render('404.ejs');
+    } else {
+        res.render('500.ejs', { locals: { 
+                  header: '#Header#'
+                 ,footer: '#Footer#'
+                 ,title : 'Page Title'
+                 ,description: 'Page Description'
+                 ,author: 'Your Name'
+                 ,analyticssiteid: 'XXXXXXX'
+                 ,error: err 
+                } });
+    }
+});
 server.listen( port);
 
 //Setup Socket.IO
@@ -28,18 +46,13 @@ io.on('connection', function(client){
 	});
 });
 
-console.log('Listening on http://0.0.0.0:' + port )
 
-//setup the errors
-server.error(function(err, req, res, next){
-    if (err instanceof NotFound) {
-        res.render('404.ejs');
-    } else {
-        res.render('500.ejs', { locals: { error: err } });
-    }
-});
+///////////////////////////////////////////
+//              Routes                   //
+///////////////////////////////////////////
 
-//Routes
+/////// ADD ALL YOUR ROUTES HERE  /////////
+
 server.get('/', function(req,res){
   res.render('index.ejs', {
     locals : { 
@@ -53,14 +66,22 @@ server.get('/', function(req,res){
   });
 });
 
-//Test Routes for 404 and 500 errors
-server.get('/404', function(req, res){
+
+//A Route for Creating a 500 Error (Useful to keep around)
+server.get('/500', function(req, res){
+    throw new Error('This is a 500 Error');
+});
+
+//The 404 Route (ALWAYS Keep this as the last route)
+server.get('/*', function(req, res){
     throw new NotFound;
 });
 
-server.get('/500', function(req, res){
-    throw new Error('keyboard cat!');
-});
+function NotFound(msg){
+    this.name = 'NotFound';
+    Error.call(this, msg);
+    Error.captureStackTrace(this, arguments.callee);
+}
 
 
-
+console.log('Listening on http://0.0.0.0:' + port );
