@@ -2,11 +2,12 @@ Node Boilerplate
 =================
 node-boilerplate takes html-boilerplate, express, connect and Socket.IO and organizes them into a ready to use website project. Its a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
 
-Node Boilerplate has 3 goals:
+Node Boilerplate has 4 goals:
 
 1. To end the repetition involved with starting a new Node website project
-1. To never install anything outside of the project directory (For easier production deployment)
-2. To make it easy to install additional modules within the project directory 
+2. To never install anything outside of the project directory (For easier production deployment)
+3. To make it easy to install additional modules within the project directory
+4. To enable easy upgrade or freezing of project dependencies  
 
 
 To start a project:
