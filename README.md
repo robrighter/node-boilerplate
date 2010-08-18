@@ -31,3 +31,5 @@ To add additional modules:
 
 You can git clone any other modules into the lib folder. Any modules cloned into the git folder can be required as global modules ie.. require('somemodule').
 
+**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the modules in the lib directory and the initproject.sh script will initialize projects with your new set of modules.** 
+
