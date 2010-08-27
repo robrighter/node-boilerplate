@@ -1,1 +1,1 @@
-../../../lib/html5-boilerplate/js/dd_belatedpng.js
+../../lib/html5-boilerplate/js/dd_belatedpng.js

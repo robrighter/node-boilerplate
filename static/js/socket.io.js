@@ -1,1 +1,1 @@
-../../../lib/Socket.IO/socket.io.js
+../../lib/Socket.IO/socket.io.js
