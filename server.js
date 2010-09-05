@@ -25,7 +25,9 @@ server.error(function(err, req, res, next){
                  ,description: ''
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX' 
-                } });
+                } },function(err,str){
+                  res.send(str,{},404);
+                });
     } else {
         res.render('500.ejs', { locals: { 
                   header: '#Header#'
