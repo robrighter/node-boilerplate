@@ -37,7 +37,9 @@ server.error(function(err, req, res, next){
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX'
                  ,error: err 
-                } });
+                } },function(err,str){
+                  res.send(str,{},500);
+                });
     }
 });
 server.listen( port);
