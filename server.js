@@ -25,9 +25,7 @@ server.error(function(err, req, res, next){
                  ,description: ''
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX' 
-                } },function(err,str){
-                  res.send(str,{},404);
-                });
+                },status: 404 });
     } else {
         res.render('500.ejs', { locals: { 
                   header: '#Header#'
@@ -37,9 +35,7 @@ server.error(function(err, req, res, next){
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX'
                  ,error: err 
-                } },function(err,str){
-                  res.send(str,{},500);
-                });
+                },status: 500 });
     }
 });
 server.listen( port);
