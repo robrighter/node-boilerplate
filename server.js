@@ -11,8 +11,8 @@ var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
     server.use(connect.bodyDecoder());
-    server.use(server.router);
     server.use(connect.staticProvider(__dirname + '/static'));
+    server.use(server.router);
 });
 
 //setup the errors
