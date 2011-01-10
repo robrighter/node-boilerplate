@@ -31,5 +31,14 @@ To add additional modules:
 
 You can git clone any other modules into the lib folder. Any modules cloned into the git folder can be required as global modules ie.. require('somemodule').
 
-**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the modules in the lib directory and the initproject.sh script will initialize projects with your new set of modules.** 
+**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the modules in the lib directory and the initproject.sh script will initialize projects with your new set of modules.**
+
+Deployment
+===============
+Currently node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. This means that:
+1. The version of Node is defined in config.json
+2. The main script to run is server.js
+3. The web server port is pulled from process.env.PORT 
+**Note: Currently the port associated with the Joyent SmartMachine is only automatically detected on the server side and not reflected on the client side. When you deploy, be sure to update the client side javascript to reflect the updated socketIO url.** Feel free to write a patch to correct this problem ;-)
+ 
 
