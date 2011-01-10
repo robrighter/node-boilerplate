@@ -36,12 +36,12 @@ You can git clone any other modules into the lib folder. Any modules cloned into
 Deployment
 ===============
 
-Currently node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. This means that:
+node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. This means that:
 
 1. The version of Node is defined in config.json
 2. The main script to run is server.js
 3. The web server port is pulled from process.env.PORT 
 
-**Note: Currently the port associated with the Joyent SmartMachine is only automatically detected on the server side and not reflected on the client side. When you deploy, be sure to update the client side javascript to reflect the updated socketIO url.** Feel free to write a patch to correct this problem ;-)
+**Note: Currently the port associated with the Joyent SmartMachine is only automatically detected on the server side and not reflected on the client side. When you deploy, be sure to update the client side javascript to reflect the updated socket.IO url.** Feel free to write a patch to correct this problem ;-)
  
 
