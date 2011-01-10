@@ -4,7 +4,7 @@ var connect = require('connect')
     , express = require('express')
     , sys = require('sys')
     , io = require('Socket.IO-node')
-    , port = 8081;
+    , port = (process.env.PORT || 8081);
 
 //Setup Express
 var server = express.createServer();
