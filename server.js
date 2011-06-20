@@ -10,8 +10,8 @@ var connect = require('connect')
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
-    server.use(connect.bodyDecoder());
-    server.use(connect.staticProvider(__dirname + '/static'));
+    server.use(connect.bodyParser());
+    server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
 });
 
