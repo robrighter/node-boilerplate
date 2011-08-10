@@ -1,5 +1,5 @@
 //setup Dependencies
-require(__dirname + "/lib/setup").ext( __dirname + "/lib").ext( __dirname + "/lib/express/support");
+require(__dirname + "/lib/setup").ext( __dirname + "/lib").ext( __dirname + "/lib/express/support").ext( __dirname + "/lib/socket.io/support");
 var connect = require('connect')
     , express = require('express')
     , sys = require('sys')
@@ -42,11 +42,11 @@ server.listen( port);
 
 //Setup Socket.IO
 var io = io.listen(server);
-io.on('connection', function(client){
+io.sockets.on('connection', function(client){
 	console.log('Client Connected');
-	client.on('message', function(message){
-		client.broadcast(message);
-		client.send(message);
+	client.on('message', function(msg){
+	    client.broadcast.emit('message', "retour:"+msg);
+		client.emit('message', "retour:"+msg);
 	});
 	client.on('disconnect', function(){
 		console.log('Client Disconnected.');
