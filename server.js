@@ -3,15 +3,15 @@ require(__dirname + "/lib/setup").ext( __dirname + "/lib").ext( __dirname + "/li
 var connect = require('connect')
     , express = require('express')
     , sys = require('sys')
-    , io = require('Socket.IO-node')
+    , io = require('socket.io')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
-    server.use(connect.bodyDecoder());
-    server.use(connect.staticProvider(__dirname + '/static'));
+    server.use(connect.bodyParser());
+    server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
 });
 
