@@ -1,0 +1,138 @@
+
+/**
+ * Module dependencies.
+ */
+
+var SchemaType = require('../schematype')
+  , ArrayType = require('./array')
+  , MongooseDocumentArray = require('../types/documentarray')
+  , Subdocument = require('../types/embedded')
+  , CastError = SchemaType.CastError
+  , Document = require('../document');
+
+/**
+ * SubdocsArray SchemaType constructor
+ *
+ * @param {String} key
+ * @param {Schema} schema
+ * @param {Object} options
+ * @api private
+ */
+
+function DocumentArray (key, schema, options) {
+  // compile an embedded document for this schema
+  // TODO Move this into parent model compilation for performance improvement?
+  function EmbeddedDocument () {
+    Subdocument.apply(this, arguments);
+  };
+
+  EmbeddedDocument.prototype.__proto__ = Subdocument.prototype;
+  EmbeddedDocument.prototype.schema = schema;
+  EmbeddedDocument.schema = schema;
+
+  // apply methods
+  for (var i in schema.methods) {
+    EmbeddedDocument.prototype[i] = schema.methods[i];
+  }
+
+  // apply statics
+  for (var i in schema.statics)
+    EmbeddedDocument[i] = schema.statics[i];
+
+  ArrayType.call(this, key, EmbeddedDocument, options);
+
+  this.caster = EmbeddedDocument;
+  this.caster.options = options;
+
+  var self = this;
+
+  this.schema = schema;
+  this.default(function(){
+    return new MongooseDocumentArray([], self.path, this);
+  });
+};
+
+/**
+ * Inherits from ArrayType.
+ */
+
+DocumentArray.prototype.__proto__ = ArrayType.prototype;
+
+/**
+ * Performs local validations first, then validations on each embedded doc
+ *
+ * @api private
+ */
+
+DocumentArray.prototype.doValidate = function (array, fn, scope) {
+  var self = this;
+  SchemaType.prototype.doValidate.call(this, array, function(err){
+    if (err) return fn(err);
+
+    var count = array.length
+      , error = false;
+
+    if (!count) return fn();
+
+    array.forEach(function(doc, index){
+      doc.validate(function(err){
+        if (err && !error){
+          // rewrite they key
+          err.key = self.key + '.' + index + '.' + err.key;
+          fn(err);
+          error = true;
+        } else {
+          --count || fn();
+        }
+      });
+    });
+  }, scope);
+};
+
+/**
+ * Casts contents
+ *
+ * @param {Object} value
+ * @param {Document} document that triggers the casting
+ * @api private
+ */
+
+DocumentArray.prototype.cast = function (value, doc, init, prev) {
+  var subdoc
+    , i
+
+  if (Array.isArray(value)) {
+    if (!(value instanceof MongooseDocumentArray)) {
+      value = new MongooseDocumentArray(value, this.path, doc);
+    }
+
+    i = value.length;
+
+    while (i--) {
+      if (!(value[i] instanceof Subdocument)) {
+        if (init) {
+          subdoc = new this.caster(null, value);
+          // skip _id for pre-init hooks
+          delete subdoc._doc._id;
+          value[i] = subdoc.init(value[i]);
+        } else {
+          subdoc = prev && prev.id(value[i]._id) ||
+                   new this.caster(null, value);
+          value[i] = subdoc.set(value[i]);
+        }
+      }
+    }
+
+    return value;
+  } else {
+    return this.cast([value], doc, init, prev);
+  }
+
+  throw new CastError('documentarray', value);
+};
+
+/**
+ * Module exports.
+ */
+
+module.exports = DocumentArray;
