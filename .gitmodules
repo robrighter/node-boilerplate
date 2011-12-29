@@ -1,3 +1,0 @@
-[submodule "deps/jade-html5-boilerplate"]
-	path = deps/jade-html5-boilerplate
-	url = git://github.com/dmotz/jade-html5-boilerplate.git

@@ -18,7 +18,7 @@ server.configure(function(){
 //setup the errors
 server.error(function(err, req, res, next){
     if (err instanceof NotFound) {
-        res.render('404.ejs', { locals: { 
+        res.render('404.jade', { locals: { 
                   header: '#Header#'
                  ,footer: '#Footer#'
                  ,title : '404 - Not Found'
