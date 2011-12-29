@@ -1,17 +1,17 @@
 //setup Dependencies
-require(__dirname + "/lib/setup").ext( __dirname + "/lib").ext( __dirname + "/lib/express/support");
 var connect = require('connect')
     , express = require('express')
-    , sys = require('sys')
-    , io = require('Socket.IO-node')
+    , io = require('Socket.io')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
-    server.use(connect.bodyDecoder());
-    server.use(connect.staticProvider(__dirname + '/static'));
+    server.use(connect.bodyParser());
+    server.use(express.cookieParser());
+    server.use(express.session({ secret: "shhhhhhhhh!"}));
+    server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
 });
 
@@ -19,18 +19,14 @@ server.configure(function(){
 server.error(function(err, req, res, next){
     if (err instanceof NotFound) {
         res.render('404.jade', { locals: { 
-                  header: '#Header#'
-                 ,footer: '#Footer#'
-                 ,title : '404 - Not Found'
+                  title : '404 - Not Found'
                  ,description: ''
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX' 
                 },status: 404 });
     } else {
-        res.render('500.ejs', { locals: { 
-                  header: '#Header#'
-                 ,footer: '#Footer#'
-                 ,title : 'The Server Encountered an Error'
+        res.render('500.jade', { locals: { 
+                  title : 'The Server Encountered an Error'
                  ,description: ''
                  ,author: ''
                  ,analyticssiteid: 'XXXXXXX'
@@ -61,12 +57,10 @@ io.on('connection', function(client){
 /////// ADD ALL YOUR ROUTES HERE  /////////
 
 server.get('/', function(req,res){
-  res.render('index.ejs', {
+  res.render('index.jade', {
     locals : { 
-              header: '#Header#'
-             ,footer: '#Footer#'
-             ,title : 'Page Title'
-             ,description: 'Page Description'
+              title : 'Your Page Title'
+             ,description: 'Your Page Description'
              ,author: 'Your Name'
              ,analyticssiteid: 'XXXXXXX' 
             }

@@ -1,7 +1,9 @@
 #!/bin/sh
 echo "Creating necessary folders"
+mkdir ./static
 mkdir ./static/images
 mkdir ./static/css
+mkdir ./static/js
 mkdir ./views
 mkdir ./models
 
@@ -12,9 +14,11 @@ cp ./templates/views/500.jade ./views/500.jade
 cp ./templates/views/404.jade ./views/404.jade
 cp ./templates/views/index.jade ./views/index.jade
 cp ./templates/views/layout.jade ./views/layout.jade
-# TODO copy over the js
+cp ./templates/js/script.js ./static/js/script.js
+# TODO copy over the models
 
 echo "Setting up the dependancies from NPM..."
+npm install connect
 npm install express
 npm install jade
 npm install mongoose
@@ -23,6 +27,7 @@ npm install socket.io
 echo "Removing the stuff you dont want..."
 rm -rf .git
 rm -rf bin
+rm -rf templates
 rm README.md
 
 echo "Initing the new git project..."
