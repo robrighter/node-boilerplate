@@ -25,9 +25,9 @@ npm install
 
 echo "Removing the stuff you dont want..."
 rm -rf .git
-rm -rf bin
 rm -rf templates
 rm README.md
+rm -rf initproject.sh
 
 echo "Initing the new git project..."
 git init
