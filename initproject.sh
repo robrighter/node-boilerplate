@@ -11,6 +11,7 @@ echo "Copying Markup and CSS BoilerPlate..."
 cp ./templates/app/server.js ./server.js
 cp ./templates/app/package.json ./package.json
 cp ./templates/app/.gitignore ./.gitignore
+cp ./templates/app/config.json ./config.json
 curl https://raw.github.com/h5bp/html5-boilerplate/master/css/style.css > ./static/css/style.css
 cp ./templates/views/500.jade ./views/500.jade
 cp ./templates/views/404.jade ./views/404.jade
