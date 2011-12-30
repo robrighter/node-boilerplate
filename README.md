@@ -1,5 +1,6 @@
-Node Boilerplate
-=================
+Node Boilerplate Version 2
+==========================
+*Requires Node v0.6.6 (or newer)*
 node-boilerplate takes html-boilerplate, express, connect and Socket.IO and organizes them into a ready to use website project. Its a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
 
 Node Boilerplate has 4 goals:
@@ -8,7 +9,7 @@ Node Boilerplate has 4 goals:
 2. To never install anything outside of the project directory (For easier production deployment)
 3. To make it easy to install additional modules within the project directory
 4. To enable easy upgrade or freezing of project dependencies  
-
+(These goals are much easier to meet now that node includes the node_modules convention)
 
 To start a project:
 		
@@ -16,7 +17,6 @@ To start a project:
 		cd mynewproject
 		./bin/initproject.sh
 This will copy down all of the boilerplate files organize them appropriately and init a fresh new git repository within which you can build your next big thing.
-
 
 
 To run the boilerplate template app:
