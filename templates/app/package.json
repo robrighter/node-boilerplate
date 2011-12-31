@@ -11,7 +11,9 @@
     "socket.io": "0.8.7"
   },
   "devDependencies": {
-    "vows": "0.5.x"
+    "vows": "0.5.x",
+	"mocha": "*",
+	"should": "*"
   },
   "engine": "node >= 0.6.6"
 }
