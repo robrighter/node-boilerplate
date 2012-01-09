@@ -1,7 +1,7 @@
 //setup Dependencies
 var connect = require('connect')
     , express = require('express')
-    , io = require('Socket.io')
+    , io = require('socket.io')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
