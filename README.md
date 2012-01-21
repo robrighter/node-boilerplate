@@ -1,7 +1,7 @@
 Node Boilerplate Version 2
 ==========================
 *Requires Node v0.6.6 (or newer)*
-node-boilerplate takes html-boilerplate, express, connect, jade and Socket.IO and organizes them into a ready to use website project. Its a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
+node-boilerplate takes html-boilerplate, express, connect, jade and Socket.IO and organizes them into a ready to use website project. It's a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
 
 Node Boilerplate has 4 goals:
 
@@ -16,7 +16,7 @@ To start a project:
 		git clone git://github.com/robrighter/node-boilerplate.git mynewproject
 		cd mynewproject
 		./initproject.sh
-This will copy down all of the boilerplate files organize them appropriately and init a fresh new git repository within which you can build your next big thing.
+This will copy down all of the boilerplate files, organize them appropriately and init a fresh new git repository within which you can build your next big thing.
 
 
 To run the boilerplate template app:
@@ -35,9 +35,9 @@ Additional Features:
 
 To add additional modules:
 
-Update the package.json file to include new module dependancies and run 'npm install'.
+Update the package.json file to include new module dependencies and run 'npm install'.
 
-**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the module dependancies outlined in the ./templates/apps/package.json file to best fit your needs and the initproject.sh script will initialize projects with your new set of modules.**
+**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the module dependencies outlined in the ./templates/apps/package.json file to best fit your needs and the initproject.sh script will initialize projects with your new set of modules.**
 
 Deployment
 ===============
