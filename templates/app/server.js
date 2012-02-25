@@ -8,6 +8,7 @@ var connect = require('connect')
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
+    server.set('view options', { layout: false });
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
     server.use(express.session({ secret: "shhhhhhhhh!"}));
