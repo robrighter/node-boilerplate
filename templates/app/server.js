@@ -2,6 +2,7 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
+    , mongoose = require('mongoose')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
@@ -50,6 +51,11 @@ io.sockets.on('connection', function(socket){
   });
 });
 
+//Setup Mongoose
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+require('./models/post.js').make(Schema, mongoose);
+var db = mongoose.connect('mongodb://localhost/boilerplate');
 
 ///////////////////////////////////////////
 //              Routes                   //

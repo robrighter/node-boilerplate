@@ -22,6 +22,7 @@ cp ./templates/views/index.jade ./views/index.jade
 cp ./templates/views/layout.jade ./views/layout.jade
 cp ./templates/js/script.js ./static/js/script.js
 # TODO copy over the models
+cp ./templates/models/post.js ./models/post.js
 
 echo "Setting up the dependancies from NPM..."
 npm install
