@@ -23,7 +23,7 @@ cp ./templates/views/layout.jade ./views/layout.jade
 cp ./templates/js/script.js ./static/js/script.js
 # TODO copy over the models
 
-echo "Setting up the dependancies from NPM..."
+echo "Setting up the dependencies from NPM..."
 npm install
 
 echo "Removing the stuff you dont want..."
