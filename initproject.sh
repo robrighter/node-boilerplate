@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Creating necessary folders"
+echo "Creating necessary folders..."
 mkdir ./static
 mkdir ./static/images
 mkdir ./static/css
@@ -8,7 +8,7 @@ mkdir ./views
 mkdir ./models
 mkdir ./test
 
-echo "Copying Markup and CSS BoilerPlate..."
+echo "Copying code, markup and CSS boilerplate..."
 cp ./templates/app/server.js ./server.js
 cp ./templates/app/package.json ./package.json
 cp ./templates/app/.gitignore ./.gitignore
@@ -23,17 +23,16 @@ cp ./templates/views/layout.jade ./views/layout.jade
 cp ./templates/js/script.js ./static/js/script.js
 # TODO copy over the models
 
-echo "Setting up the dependencies from NPM..."
+echo "Setting up dependencies from NPM..."
 npm install
 
-echo "Removing the stuff you dont want..."
+echo "Removing stuff you don't want..."
 rm -rf .git
 rm -rf templates
 rm README.md
-rm -rf initproject.sh
+rm initproject.sh
 
-echo "Initing the new git project..."
+echo "Initializing new git project..."
 git init
 git add .
 git commit -m"Initial Commit"
-
