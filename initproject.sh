@@ -31,6 +31,7 @@ rm -rf .git
 rm -rf templates
 rm README.md
 rm initproject.sh
+rm initproject.bat
 
 echo "Initializing new git project..."
 git init
