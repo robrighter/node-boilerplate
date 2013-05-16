@@ -1,7 +1,7 @@
 TESTS = test/*.js
 
 test:
-	@NODE_ENV=test ./node_modules/.bin/mocha \
+	@NODE_ENV=test ./node_modules/mocha/bin/mocha \
 			--require should \
 			--reporter list \
 			--slow 20 \
