@@ -58,6 +58,10 @@ io.sockets.on('connection', function(socket){
 /////// ADD ALL YOUR ROUTES HERE  /////////
 
 server.get('/', function(req,res){
+
+  console.log('Your GET Params: ');
+  console.log('req.query: ' + JSON.stringify(req.query));
+
   res.render('index.jade', {
     locals : { 
               title : 'Your Page Title'
@@ -76,7 +80,7 @@ server.get('/500', function(req, res){
 
 //The 404 Route (ALWAYS Keep this as the last route)
 server.get('/*', function(req, res){
-    throw new NotFound;
+    throw new NotFound('Your Error Message');
 });
 
 function NotFound(msg){
